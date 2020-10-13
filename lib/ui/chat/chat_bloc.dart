@@ -65,6 +65,8 @@ class ChatBloc implements BaseBloc {
   void dispose() async {
     await _messagesController?.drain();
     await _messagesController?.close();
+    await _typingController?.drain();
+    await _typingController?.close();
     scrollController.dispose();
     _socketIoManager.disconnect();
   }
